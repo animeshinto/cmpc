@@ -1,0 +1,716 @@
+:root{
+  --blue-cmpc:#0061ff;
+  --dark-blue:#0046b8;
+  --bg-light:#f1f4f9;
+}
+
+/* =========================
+ BASE
+ ========================= */
+body{
+  background-color:var(--bg-light);
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden; /* ✅ mantenemos: scroll se hace en .main-layout */
+  margin:0;
+}
+
+/* =========================
+ HEADER (BOOTSTRAP PROOF)
+ ========================= */
+.header-nav{
+  background:linear-gradient(90deg,var(--blue-cmpc),var(--dark-blue));
+  padding:12px 25px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  position:sticky;
+  top:0;
+  z-index:5000;
+  display:flex;
+  flex-wrap:wrap;
+}
+.header-top{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex-basis:100%;
+  flex-wrap:nowrap;
+}
+.header-top h1{
+  color:#fff;
+  font-size:1.4rem;
+  margin:0;
+  font-weight:700;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.search-container{
+  position:relative;
+  flex:0 0 450px;
+  max-width:450px;
+}
+.search-container input{
+  width:100%;
+  border-radius:6px;
+  border:none;
+  padding:10px 15px 10px 45px;
+  font-size:1rem;
+}
+.search-container .bi-search{
+  position:absolute;
+  left:15px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#0061ff;
+}
+
+/* FILA 2 */
+.header-menu{
+  flex-basis:100%;
+  margin-top:10px;
+}
+.menu-bar{
+  display:flex;
+  gap:10px;
+}
+
+/* =========================
+ LAYOUT
+ ========================= */
+.main-layout{
+  display:flex;
+  gap:20px;
+  padding:20px;
+  flex-grow:1;
+
+  /* ✅ FIX: antes estaba overflow:hidden y bloqueaba el scroll */
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+
+.panel-izquierdo{
+  flex:1.6;
+  overflow-y:auto;
+}
+.panel-derecho{
+  flex:1;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.05);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid #e0e6ed;
+}
+
+/* =========================
+ BOTONERA FICHAS
+ ========================= */
+.email-bar{
+  display:flex;
+  gap:12px;
+  margin-bottom:10px;
+  flex-wrap:wrap;
+}
+.email-btn,
+.att-btn,
+.ssh-btn{
+  background-color:var(--blue-cmpc);
+  border-color:var(--blue-cmpc);
+  color:#fff;
+  border-radius:8px;
+  font-weight:800;
+  padding:6px 12px;
+  white-space:nowrap;
+}
+.email-btn:hover,
+.att-btn:hover,
+.ssh-btn:hover{
+  background-color:var(--dark-blue);
+  border-color:var(--dark-blue);
+}
+
+/* =========================
+ FICHAS / TABLAS
+ ========================= */
+.ficha-card{
+  background:#fff;
+  border-radius:10px;
+  border:1px solid #e0e6ed;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+.ficha-section-title{
+  background:#eef3ff;
+  color:var(--dark-blue);
+  padding:10px 15px;
+  font-size:0.8rem;
+  font-weight:800;
+  text-transform:uppercase;
+  border-left:4px solid var(--blue-cmpc);
+}
+.table-data{
+  width:100%;
+  font-size:0.95rem;
+}
+.table-data td{
+  padding:12px 20px;
+  border-bottom:1px solid #f0f4f8;
+}
+.label-cell{
+  width:35%;
+  background:#fafbfc;
+  color:#5a6a85;
+  font-weight:500;
+}
+.value-cell{
+  font-weight:700;
+  color:#1a1d23;
+}
+
+/* =========================
+ RESULTADOS
+ ========================= */
+#resultBody td{
+  vertical-align:middle;
+}
+#resultBody td:nth-child(3),
+#resultBody td:nth-child(3) small{
+  white-space:normal;
+  word-break:break-word;
+}
+
+/* =========================
+ FOOTER
+ ========================= */
+.main-footer{
+  padding:8px 30px;
+  background:#1a1d23;
+  color:#95a5a6;
+  font-size:0.8rem;
+  display:flex;
+  justify-content:space-between;
+}
+.footer-author{
+  color:#00a8ff;
+  font-weight:bold;
+}
+
+/* =========================
+ UTILIDADES
+ ========================= */
+.hidden{ display:none; }
+
+/* Scrollbar */
+::-webkit-scrollbar{ width:6px; height:10px; }
+::-webkit-scrollbar-thumb{ background:#cbd5e0; border-radius:10px; }
+
+/* =========================
+ RESPONSIVE
+ ========================= */
+@media (max-width: 768px){
+  .header-top{ flex-wrap:wrap; }
+  .search-container{ flex:1 1 100%; max-width:100%; }
+}
+
+/* =========================
+ RESTAURAR ESTILOS PERDIDOS
+ ========================= */
+.menu-btn{
+  background:#eef3ff;
+  border:1px solid #d6e3ff;
+  color:var(--dark-blue);
+  font-weight:800;
+  padding:6px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.15s ease;
+  white-space:nowrap;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+}
+.menu-btn:hover{
+  background:#dbe7ff;
+  border-color:#c7dcff;
+}
+
+.badge-status{
+  padding:5px 12px;
+  border-radius:6px;
+  color:#fff;
+  font-weight:bold;
+  font-size:0.7rem;
+  display:inline-block;
+  min-width:75px;
+  text-align:center;
+}
+.color-ppal{ background-color:#4c6e31; }
+.color-resp{ background-color:#92d050; }
+.color-dedi{ background-color:#ff0000; }
+.color-tel{ background-color:#7030a0; }
+.color-ups{ background-color:#ffff00; color:#000; }
+.color-sw{ background-color:#4472c4; }
+.color-unic{ background-color:#76933c; }
+.color-zret{ background-color:#444444; }
+
+.cs-link{
+  color:var(--blue-cmpc);
+  text-decoration:none;
+  font-weight:bold;
+  cursor:pointer;
+}
+.cs-link:hover{ text-decoration:underline; }
+
+/* =========================================================
+ ✅ LISTA EXCEL: colores pastel por INFO (fila completa)
+ ========================================================= */
+.excel-table-page #tablaDatos td,
+.excel-table-page #tablaDatos th{
+  white-space: nowrap;
+}
+.excel-table-page tr.info-row-CORE-PPAL td{ background:#dfeaf7 !important; }
+.excel-table-page tr.info-row-CORE-RESP td{ background:#e4f5e8 !important; }
+.excel-table-page tr.info-row-CORE-UNIC td{ background:#eaf6ea !important; }
+.excel-table-page tr.info-row-PPAL td{ background:#e6f2dc !important; }
+.excel-table-page tr.info-row-RESP td{ background:#f0f9e6 !important; }
+.excel-table-page tr.info-row-DEDI td{ background:#fde2e2 !important; }
+.excel-table-page tr.info-row-TEL td{ background:#f0e4ff !important; }
+.excel-table-page tr.info-row-SW td{ background:#e3ecff !important; }
+.excel-table-page tr.info-row-UNIC td{ background:#e8f3dc !important; }
+.excel-table-page tr.info-row-XG td{ background:#e6fbff !important; }
+.excel-table-page tr.info-row-UPS td{ background:#fff9b8 !important; color:#000 !important; }
+.excel-table-page tr.info-row-Z-RET td,
+.excel-table-page tr.info-row-Z-RETIRADO td,
+.excel-table-page tr.info-row-Z-RET-UNIC td{ background:#efefef !important; }
+.excel-table-page table.dataTable tbody tr:hover td{ filter: brightness(0.97); }
+
+/* Botón (Todos) */
+.excel-table-page .xl-filter{
+  width:100%;
+  min-width:110px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:4px 6px;
+  border:1px solid #cfd8e3;
+  border-radius:2px;
+  background:#fff;
+  font-size:12px;
+  cursor:pointer;
+}
+.excel-table-page .xl-filter-text{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.excel-table-page .xl-filter-caret{ opacity:.75; }
+
+/* =========================================================
+ ✅ FIX FINAL LISTA (sin “romper look”)
+ - Mantiene el borde/redondeo (overflow:hidden en el wrap)
+ - Barra horizontal/vertical nativa visible en scrollBody
+ ========================================================= */
+
+/* Recupera el look del contenedor */
+.lista-panel .excel-dt-wrap{
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* El scroll real lo hace DataTables aquí */
+.lista-panel .dataTables_scrollBody{
+  overflow-x: scroll !important;
+  overflow-y: scroll !important;
+  scrollbar-gutter: stable both-edges;
+  background: #fff;
+  padding-bottom: 14px;
+  box-sizing: border-box;
+}
+
+/* Fuerza overflow horizontal real sin deformar el layout */
+.lista-panel .dataTables_scrollBody > table,
+.lista-panel .dataTables_scrollHeadInner > table{
+  width: max-content !important;
+  min-width: 100% !important;
+  table-layout: auto !important;
+}
+
+/* Scrollbar más visible */
+.lista-panel .dataTables_scrollBody::-webkit-scrollbar{
+  height: 12px;
+  width: 12px;
+}
+.lista-panel .dataTables_scrollBody::-webkit-scrollbar-thumb{
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+/* =========================================================
+ ✅ RESTAURAR LOOK DATATABLES (solo listado)
+ ========================================================= */
+.lista-panel table.dataTable{
+  border-collapse: separate !important;
+  border-spacing: 0;
+  font-size: 12px;
+}
+
+/* Header */
+.lista-panel table.dataTable thead th{
+  background: #f4f6fa;
+  border-bottom: 1px solid #dfe3eb;
+  color: #1a1d23;
+  font-weight: 700;
+  padding: 6px 8px;
+}
+
+/* Segunda fila (filtros) */
+.lista-panel table.dataTable thead tr:nth-child(2) th{
+  background: #ffffff;
+  border-bottom: 1px solid #e6eaf0;
+}
+
+/* Celdas */
+.lista-panel table.dataTable tbody td{
+  padding: 6px 8px;
+  border-bottom: 1px solid #eef2f7;
+  vertical-align: middle;
+}
+
+/* Rayado tipo Excel */
+.lista-panel table.dataTable tbody tr:nth-child(even) td{
+  background: #fafbfc;
+}
+
+/* Hover */
+.lista-panel table.dataTable tbody tr:hover td{
+  background: #eef3ff;
+}
+
+/* Info / footer DataTables */
+.lista-panel .dataTables_info{
+  padding-top: 6px;
+  font-size: 12px;
+  color: #5a6a85;
+}
+
+/* =========================================================
+ AJUSTE FINO: LISTADO + DATATABLES + POPUP FILTRO (CMPC)
+ (solo estética, no rompe funcionalidad)
+ ========================================================= */
+
+/* 1) Encaje visual del contenedor del listado */
+.lista-panel .excel-dt-wrap{
+  background: #fff;
+  border: 1px solid #e0e6ed;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+/* 2) Cabecera más clara (tipo Excel) */
+.lista-panel table.dataTable thead th{
+  background: #f4f6fa !important;
+  border-bottom: 1px solid #dfe3eb !important;
+  color: #1a1d23 !important;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 6px 8px !important;
+}
+
+/* Fila de filtros (inputs y botones) */
+.lista-panel table.dataTable thead tr:nth-child(2) th{
+  background: #ffffff !important;
+  border-bottom: 1px solid #eef2f7 !important;
+  padding: 4px 6px !important;
+}
+
+/* Inputs de filtro más “pro” */
+.lista-panel input.dt-filter-text{
+  height: 26px;
+  border: 1px solid #d6deea;
+  border-radius: 6px;
+  padding: 4px 6px;
+  font-size: 12px;
+  outline: none;
+}
+.lista-panel input.dt-filter-text:focus{
+  border-color: #0061ff;
+  box-shadow: 0 0 0 2px rgba(0,97,255,0.15);
+}
+
+/* Botón (Todos) compacto */
+.lista-panel .xl-filter{
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid #d6deea;
+  padding: 4px 8px;
+  font-size: 12px;
+  background: #fff;
+}
+.lista-panel .xl-filter:hover{
+  background: #f6f9ff;
+  border-color: #c7dcff;
+}
+
+/* 3) Celdas / filas más limpias */
+.lista-panel table.dataTable tbody td{
+  padding: 6px 8px !important;
+  border-bottom: 1px solid #eef2f7 !important;
+  font-size: 12px;
+  color: #1a1d23;
+}
+.lista-panel table.dataTable tbody tr:nth-child(even) td{
+  background: #fafbfc;
+}
+
+/* 4) ScrollBody: asegurar barra y que no “se coma” visualmente */
+.lista-panel .dataTables_scrollBody{
+  background: #fff;
+}
+
+/* 5) POPUP DEL FILTRO: hacerlo estilo Excel y NO gigante */
+.xl-popup{
+  width: 320px;
+  max-width: 420px;
+  max-height: 340px;
+  border-radius: 10px;
+  border: 1px solid #d6deea;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+
+/* Header del popup */
+.xl-popup-head{
+  background: #f4f6fa;
+  border-bottom: 1px solid #eef2f7;
+}
+
+/* Buscador dentro del popup */
+.xl-popup-search{
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid #d6deea;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.xl-popup-search:focus{
+  border-color: #0061ff;
+  box-shadow: 0 0 0 2px rgba(0,97,255,0.15);
+  outline: none;
+}
+
+/* Lista (checkboxes) scrolleable y compacta */
+.xl-popup-list{
+  padding: 6px 10px;
+}
+.xl-item{
+  padding: 4px 2px;
+  border-radius: 6px;
+}
+.xl-item:hover{
+  background: #eef3ff;
+}
+.xl-item span{
+  font-size: 12px;
+  color: #1a1d23;
+}
+
+/* Botones del popup */
+.xl-popup-foot{
+  background: #fff;
+}
+.xl-btn{
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.xl-btn-primary{
+  background: #0061ff;
+  border-color: #0061ff;
+}
+.xl-btn-primary:hover{
+  background: #0046b8;
+  border-color: #0046b8;
+}
+
+/* Mini botones Todo/Nada */
+.xl-mini{
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+/* =========================================================
+ ✅ BARRA HORIZONTAL FIJA (estilo nativo) PARA LISTADO
+ - Scroll vertical sigue en DataTables
+ - Scroll horizontal: barra fija sincronizada (JS)
+ ========================================================= */
+
+/* 1) El scroll vertical sigue normal */
+.lista-panel .dataTables_scrollBody{
+  overflow-y: auto !important;
+  overflow-x: hidden !important; /* evitar 2 barras horizontales */
+}
+
+/* 2) Barra fija abajo (se crea por JS) */
+.dt-xfixed{
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 14px;
+  z-index: 9999;
+  background: #fafbfc;
+  border-top: 1px solid #e6eaf0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* el “inner” solo da ancho */
+.dt-xfixed-inner{
+  height: 1px;
+}
+
+/* scrollbar visible */
+.dt-xfixed::-webkit-scrollbar{ height: 12px; }
+.dt-xfixed::-webkit-scrollbar-thumb{ background:#cbd5e0; border-radius:10px; }
+
+/* ✅ CONTENEDOR SIMPLE (si NO usas DataTables scrollX) */
+.table-wrap{
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  background:#fff;
+  -webkit-overflow-scrolling: touch;
+}
+.table-responsive{
+  overflow-x: auto !important;
+}
+
+/* ✅ fuerza horizontal si la tabla tiene muchas columnas */
+#tablaDatos{
+  white-space: nowrap;
+}
+
+
+
+/* tabla con scroll vertical y horizontal */
+.table-wrap{
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  background:#fff;
+}
+
+/* fuerza ancho para que exista scroll horizontal */
+#tablaDatos{
+  white-space: nowrap;
+}
+
+/* Botón del filtro dentro del TH */
+.th-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.xl-filter-btn{
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color:#fff;
+  border-radius:6px;
+  padding:2px 6px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.xl-filter-btn:hover{
+  background: rgba(255,255,255,0.18);
+}
+
+.xl-filter-btn.is-filtered{
+  background: #ffd24d;
+  border-color:#ffd24d;
+  color:#000;
+}
+
+/* =========================================
+   FIX: Popup filtro multi-select (no transparente)
+   (solo afecta al popup .xl-popup)
+   ========================================= */
+
+.xl-popup{
+  background: #ffffff !important;   /* <- fondo sólido */
+  opacity: 1 !important;
+  filter: none !important;
+  isolation: isolate;               /* evita “mezclas” raras */
+}
+
+.xl-popup-head{
+  background: #f4f6fa !important;   /* ya lo tienes, lo reafirmamos */
+}
+
+.xl-popup-list{
+  background: #ffffff !important;   /* <- zona lista con fondo blanco */
+}
+
+.xl-popup-foot{
+  background: #ffffff !important;   /* <- footer del popup */
+}
+
+/* Opcional: que el popup se vea más “Excel” */
+.xl-item{
+  background: transparent;
+}
+
+.xl-item:hover{
+  background: #eef3ff !important;
+}
+
+/* ===========================
+   ESTILO COMPARTIDO LISTA + CASOS
+   =========================== */
+
+.data-table-page .th-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.data-table-page .xl-filter-btn{
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color:#fff;
+  border-radius:6px;
+  padding:2px 6px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.data-table-page .xl-filter-btn:hover{
+  background: rgba(255,255,255,0.18);
+}
+
+.data-table-page .xl-filter-btn.is-filtered{
+  background:#ffd24d !important;
+  border-color:#ffd24d !important;
+  color:#000 !important;
+}
+
+/* Scroll horizontal compartido */
+.data-table-page .table-wrap{
+  max-height: 70vh;
+  overflow-y:auto;
+  overflow-x:auto;
+  background:#fff;
+  border: 1px solid #ddd;
+  -webkit-overflow-scrolling: touch;
+}
+
+.data-table-page #tablaDatos{
+  white-space: nowrap;
+}
